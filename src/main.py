@@ -64,6 +64,11 @@ class HealthResponse(BaseModel):
     rules_loaded: bool
     indexes_available: List[str]
 
+class AutoCompleteResponse(BaseModel):
+    query: str
+    suggestions: List[str]
+    total: int
+
 def determine_search_type(query: str) -> Dict[str, Any]:
     """Determine search type based on cursor rules"""
     query_lower = query.lower()
@@ -610,6 +615,175 @@ async def get_search_rules():
     """Get available search rules from cursor_rules.json"""
     return cursor_rules
 
+@app.get("/api/auto_complete", response_model=AutoCompleteResponse)
+async def auto_complete(
+    q: str = Query(..., description="Partial search query (minimum 2 characters)", min_length=2),
+    size: int = Query(10, description="Number of suggestions to return", ge=1, le=10)
+):
+    """
+    Get autocomplete suggestions for search queries
+    Returns only matching strings (e.g., 'jo' -> 'john doe')
+    Requires minimum 2 characters and returns top 10 results
+    """
+    if len(q.strip()) < 2:
+        return AutoCompleteResponse(query=q, suggestions=[], total=0)
+    
+    # Build autocomplete query using prefix matching for clean string results
+    autocomplete_query = {
+        "bool": {
+            "should": [
+                # Person full names with highest priority
+                {
+                    "prefix": {
+                        "full_name.keyword": {
+                            "value": q,
+                            "boost": 10.0
+                        }
+                    }
+                },
+                # Person first/last names 
+                {
+                    "prefix": {
+                        "first_name.keyword": {
+                            "value": q,
+                            "boost": 8.0
+                        }
+                    }
+                },
+                {
+                    "prefix": {
+                        "last_name.keyword": {
+                            "value": q,
+                            "boost": 8.0
+                        }
+                    }
+                },
+                # Organization/System names
+                {
+                    "prefix": {
+                        "name.keyword": {
+                            "value": q,
+                            "boost": 6.0
+                        }
+                    }
+                },
+                # Location names
+                {
+                    "prefix": {
+                        "location.city.keyword": {
+                            "value": q,
+                            "boost": 4.0
+                        }
+                    }
+                },
+                {
+                    "prefix": {
+                        "location.state.keyword": {
+                            "value": q,
+                            "boost": 3.0
+                        }
+                    }
+                },
+                {
+                    "prefix": {
+                        "location.country.keyword": {
+                            "value": q,
+                            "boost": 3.0
+                        }
+                    }
+                }
+            ],
+            "minimum_should_match": 1
+        }
+    }
+    
+    # Search configuration - get more results to ensure we have enough unique strings
+    search_body = {
+        "query": autocomplete_query,
+        "size": size * 3,  # Get more to filter duplicates
+        "_source": {
+            "includes": [
+                "first_name", "last_name", "full_name", "name", 
+                "location.city", "location.state", "location.country"
+            ]
+        }
+    }
+    
+    try:
+        # Search across all indexes
+        response = es_client.search(
+            index=",".join(TARGET_INDEXES),
+            body=search_body
+        )
+        
+        suggestions = []
+        seen_suggestions = set()  # To avoid duplicates
+        
+        for hit in response['hits']['hits']:
+            source = hit['_source']
+            
+            # Extract potential suggestion strings
+            candidates = []
+            
+            # Priority 1: Full names (most relevant for "john doe" style results)
+            if 'full_name' in source and source['full_name']:
+                if source['full_name'].lower().startswith(q.lower()):
+                    candidates.append(source['full_name'])
+            
+            # Priority 2: Combine first + last name for persons
+            if 'first_name' in source and 'last_name' in source:
+                if source['first_name'] and source['last_name']:
+                    full_name_combo = f"{source['first_name']} {source['last_name']}"
+                    if full_name_combo.lower().startswith(q.lower()):
+                        candidates.append(full_name_combo)
+            
+            # Priority 3: Individual first/last names
+            if 'first_name' in source and source['first_name']:
+                if source['first_name'].lower().startswith(q.lower()):
+                    candidates.append(source['first_name'])
+            
+            if 'last_name' in source and source['last_name']:
+                if source['last_name'].lower().startswith(q.lower()):
+                    candidates.append(source['last_name'])
+            
+            # Priority 4: Organization/System names
+            if 'name' in source and source['name']:
+                if source['name'].lower().startswith(q.lower()):
+                    candidates.append(source['name'])
+            
+            # Priority 5: Location names
+            if 'location' in source and isinstance(source['location'], dict):
+                for location_field in ['city', 'state', 'country']:
+                    if location_field in source['location'] and source['location'][location_field]:
+                        if source['location'][location_field].lower().startswith(q.lower()):
+                            candidates.append(source['location'][location_field])
+            
+            # Add unique candidates to suggestions
+            for candidate in candidates:
+                candidate_lower = candidate.lower()
+                if candidate_lower not in seen_suggestions:
+                    seen_suggestions.add(candidate_lower)
+                    suggestions.append(candidate)
+                    
+                    # Stop when we have enough suggestions
+                    if len(suggestions) >= size:
+                        break
+            
+            if len(suggestions) >= size:
+                break
+        
+        # Limit to requested size
+        suggestions = suggestions[:size]
+        
+        return AutoCompleteResponse(
+            query=q,
+            suggestions=suggestions,
+            total=len(suggestions)
+        )
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Auto complete error: {str(e)}")
+
 @app.get("/api/health", response_model=HealthResponse)
 async def health_check():
     """Health check endpoint"""
@@ -645,6 +819,7 @@ async def root():
             "organizations_only": "/api/search/organizations?q=<query>",
             "systems_only": "/api/search/systems?q=<query>",
             "advanced_search": "/api/search/advanced?q=<query>&location=<location>&org_type=<type>",
+            "auto_complete": "/api/auto_complete?q=<partial_query>",
             "legacy_name_search": "/api/search/name?name=<name>",
             "health": "/api/health",
             "docs": "/docs"
@@ -655,6 +830,9 @@ async def root():
             "search_by_location": "/api/search?q=Tokyo",
             "search_by_company": "/api/search?q=Technology",
             "search_by_system": "/api/search?q=CRM",
+            "auto_complete_names": "/api/auto_complete?q=jo",
+            "auto_complete_locations": "/api/auto_complete?q=Ne",
+            "auto_complete_organizations": "/api/auto_complete?q=Te",
             "search_persons_only": "/api/search/persons?q=engineer",
             "search_orgs_only": "/api/search/organizations?q=division",
             "search_systems_only": "/api/search/systems?q=management",
