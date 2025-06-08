@@ -628,50 +628,91 @@ async def auto_complete(
     if len(q.strip()) < 2:
         return AutoCompleteResponse(query=q, suggestions=[], total=0)
     
+    # Convert query to lowercase for case-insensitive matching
+    q_lower = q.lower()
+    
     # Build autocomplete query using prefix matching for clean string results
     autocomplete_query = {
         "bool": {
             "should": [
-                # Person full names with highest priority
+                # Person full names with highest priority (case-insensitive)
                 {
                     "prefix": {
                         "full_name.keyword": {
-                            "value": q,
+                            "value": q_lower,
+                            "case_insensitive": True,
                             "boost": 10.0
                         }
                     }
                 },
-                # Person first/last names 
+                # Fallback to analyzed field for case-insensitive matching
+                {
+                    "prefix": {
+                        "full_name": {
+                            "value": q_lower,
+                            "boost": 9.0
+                        }
+                    }
+                },
+                # Person first/last names (case-insensitive)
                 {
                     "prefix": {
                         "first_name.keyword": {
-                            "value": q,
+                            "value": q_lower,
+                            "case_insensitive": True,
                             "boost": 8.0
+                        }
+                    }
+                },
+                {
+                    "prefix": {
+                        "first_name": {
+                            "value": q_lower,
+                            "boost": 7.0
                         }
                     }
                 },
                 {
                     "prefix": {
                         "last_name.keyword": {
-                            "value": q,
+                            "value": q_lower,
+                            "case_insensitive": True,
                             "boost": 8.0
                         }
                     }
                 },
-                # Organization/System names
+                {
+                    "prefix": {
+                        "last_name": {
+                            "value": q_lower,
+                            "boost": 7.0
+                        }
+                    }
+                },
+                # Organization/System names (case-insensitive)
                 {
                     "prefix": {
                         "name.keyword": {
-                            "value": q,
+                            "value": q_lower,
+                            "case_insensitive": True,
                             "boost": 6.0
                         }
                     }
                 },
-                # Location names
+                {
+                    "prefix": {
+                        "name": {
+                            "value": q_lower,
+                            "boost": 5.0
+                        }
+                    }
+                },
+                # Location names (case-insensitive)
                 {
                     "prefix": {
                         "location.city.keyword": {
-                            "value": q,
+                            "value": q_lower,
+                            "case_insensitive": True,
                             "boost": 4.0
                         }
                     }
@@ -679,7 +720,8 @@ async def auto_complete(
                 {
                     "prefix": {
                         "location.state.keyword": {
-                            "value": q,
+                            "value": q_lower,
+                            "case_insensitive": True,
                             "boost": 3.0
                         }
                     }
@@ -687,7 +729,8 @@ async def auto_complete(
                 {
                     "prefix": {
                         "location.country.keyword": {
-                            "value": q,
+                            "value": q_lower,
+                            "case_insensitive": True,
                             "boost": 3.0
                         }
                     }
