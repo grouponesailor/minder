@@ -1,0 +1,162 @@
+{
+  "settings": {
+    "number_of_shards": 1,
+    "number_of_replicas": 1,
+    "analysis": {
+      "analyzer": {
+        "name_analyzer": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": ["lowercase", "asciifolding"]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "id": {
+        "type": "keyword"
+      },
+      "first_name": {
+        "type": "text",
+        "analyzer": "name_analyzer",
+        "fields": {
+          "keyword": {
+            "type": "keyword"
+          }
+        }
+      },
+      "last_name": {
+        "type": "text",
+        "analyzer": "name_analyzer",
+        "fields": {
+          "keyword": {
+            "type": "keyword"
+          }
+        }
+      },
+      "full_name": {
+        "type": "text",
+        "analyzer": "name_analyzer",
+        "fields": {
+          "keyword": {
+            "type": "keyword"
+          }
+        }
+      },
+      "work_phone": {
+        "type": "keyword"
+      },
+      "mobile_phone": {
+        "type": "keyword"
+      },
+      "location": {
+        "type": "object",
+        "properties": {
+          "city": {
+            "type": "keyword"
+          },
+          "state": {
+            "type": "keyword"
+          },
+          "country": {
+            "type": "keyword"
+          },
+          "coordinates": {
+            "type": "geo_point"
+          }
+        }
+      },
+      "gender": {
+        "type": "keyword"
+      },
+      "picture": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "keyword"
+          },
+          "thumbnail": {
+            "type": "keyword"
+          }
+        }
+      },
+      "address": {
+        "type": "object",
+        "properties": {
+          "street": {
+            "type": "text"
+          },
+          "city": {
+            "type": "keyword"
+          },
+          "state": {
+            "type": "keyword"
+          },
+          "postal_code": {
+            "type": "keyword"
+          },
+          "country": {
+            "type": "keyword"
+          }
+        }
+      },
+      "interests": {
+        "type": "keyword"
+      },
+      "professional_experience": {
+        "type": "nested",
+        "properties": {
+          "company": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword"
+              }
+            }
+          },
+          "position": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword"
+              }
+            }
+          },
+          "start_date": {
+            "type": "date"
+          },
+          "end_date": {
+            "type": "date"
+          },
+          "description": {
+            "type": "text"
+          },
+          "skills": {
+            "type": "keyword"
+          }
+        }
+      },
+      "cars": {
+        "type": "nested",
+        "properties": {
+          "make": {
+            "type": "keyword"
+          },
+          "model": {
+            "type": "keyword"
+          },
+          "year": {
+            "type": "integer"
+          },
+          "color": {
+            "type": "keyword"
+          },
+          "license_plate": {
+            "type": "keyword"
+          }
+        }
+      }
+    }
+  }
+} 

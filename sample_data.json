@@ -1,0 +1,63 @@
+[
+  {
+    "name": "יוחנן כהן",
+    "role": "מפתח בכיר",
+    "title": "Senior Developer",
+    "skills": "React, Python, Node.js",
+    "tags": "מדריך, אנגלית",
+    "team": "פיתוח",
+    "department": "טכנולוגיה",
+    "organization": "יחידת פיתוח",
+    "tech_stack": "React, Python",
+    "experience_years": 5
+  },
+  {
+    "name": "Sarah Johnson",
+    "role": "Product Manager",
+    "title": "מנהלת מוצר",
+    "skills": "BI, SQL, Project Management",
+    "tags": "חברתי, נעים",
+    "team": "Product",
+    "department": "Product Management",
+    "organization": "Product Team",
+    "tech_stack": "BI, SQL",
+    "experience_years": 8
+  },
+  {
+    "name": "מיכל לוי",
+    "role": "אנליסט מערכות",
+    "title": "Systems Analyst",
+    "skills": "SQL, AWS, Data Analysis",
+    "tags": "מומחה, צרפתית",
+    "team": "אנליזה",
+    "department": "מערכות מידע",
+    "organization": "צוות אנליזה",
+    "tech_stack": "AWS, SQL",
+    "experience_years": 3
+  },
+  {
+    "name": "David React",
+    "role": "Frontend Developer",
+    "title": "מפתח קדמי",
+    "skills": "React, JavaScript, TypeScript",
+    "tags": "משקפיים, שיער ארוך",
+    "team": "Frontend",
+    "department": "Development",
+    "organization": "Dev Team",
+    "tech_stack": "React, JavaScript",
+    "experience_years": 4,
+    "appearance": "משקפיים, זקן קצר"
+  },
+  {
+    "name": "אירינה פטרוב",
+    "role": "DevOps Engineer",
+    "title": "מהנדסת DevOps",
+    "skills": "AWS, Docker, Kubernetes",
+    "tags": "רשיון נהיגה",
+    "team": "Infrastructure",
+    "department": "DevOps",
+    "organization": "Infrastructure Team",
+    "tech_stack": "AWS, Docker",
+    "experience_years": 6
+  }
+] 

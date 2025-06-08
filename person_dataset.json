@@ -1,0 +1,539 @@
+[
+  {
+    "id": "person_001",
+    "first_name": "John",
+    "last_name": "Doe",
+    "full_name": "John Doe",
+    "work_phone": "+1-555-123-4567",
+    "mobile_phone": "+1-555-987-6543",
+    "location": {
+      "city": "New York",
+      "state": "NY",
+      "country": "USA",
+      "coordinates": {
+        "lat": 40.7128,
+        "lon": -74.0060
+      }
+    },
+    "gender": "male",
+    "picture": {
+      "url": "https://example.com/images/john_doe.jpg",
+      "thumbnail": "https://example.com/images/john_doe_thumb.jpg"
+    },
+    "address": {
+      "street": "123 Main Street",
+      "city": "New York",
+      "state": "NY",
+      "postal_code": "10001",
+      "country": "USA"
+    },
+    "interests": ["photography", "hiking", "cooking", "technology"],
+    "professional_experience": [
+      {
+        "company": "Tech Corp",
+        "position": "Software Engineer",
+        "start_date": "2020-01-15",
+        "end_date": "2023-06-30",
+        "description": "Developed web applications using React and Node.js",
+        "skills": ["JavaScript", "React", "Node.js", "MongoDB"]
+      },
+      {
+        "company": "StartupXYZ",
+        "position": "Senior Developer",
+        "start_date": "2023-07-01",
+        "end_date": null,
+        "description": "Leading frontend development team for innovative fintech solutions",
+        "skills": ["TypeScript", "React", "GraphQL", "AWS"]
+      }
+    ],
+    "cars": [
+      {
+        "make": "Toyota",
+        "model": "Camry",
+        "year": 2022,
+        "color": "Silver",
+        "license_plate": "ABC123"
+      }
+    ]
+  },
+  {
+    "id": "person_002",
+    "first_name": "Sarah",
+    "last_name": "Johnson",
+    "full_name": "Sarah Johnson",
+    "work_phone": "+1-555-234-5678",
+    "mobile_phone": "+1-555-876-5432",
+    "location": {
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "USA",
+      "coordinates": {
+        "lat": 37.7749,
+        "lon": -122.4194
+      }
+    },
+    "gender": "female",
+    "picture": {
+      "url": "https://example.com/images/sarah_johnson.jpg",
+      "thumbnail": "https://example.com/images/sarah_johnson_thumb.jpg"
+    },
+    "address": {
+      "street": "456 Oak Avenue",
+      "city": "San Francisco",
+      "state": "CA",
+      "postal_code": "94102",
+      "country": "USA"
+    },
+    "interests": ["yoga", "reading", "wine tasting", "travel"],
+    "professional_experience": [
+      {
+        "company": "Design Studio Inc",
+        "position": "UX Designer",
+        "start_date": "2019-03-01",
+        "end_date": "2022-08-15",
+        "description": "Created user-centered designs for mobile applications",
+        "skills": ["Figma", "Sketch", "User Research", "Prototyping"]
+      },
+      {
+        "company": "Innovation Labs",
+        "position": "Senior UX Designer",
+        "start_date": "2022-09-01",
+        "end_date": null,
+        "description": "Leading design systems and user experience strategy",
+        "skills": ["Design Systems", "User Research", "Figma", "Adobe Creative Suite"]
+      }
+    ],
+    "cars": [
+      {
+        "make": "Tesla",
+        "model": "Model 3",
+        "year": 2023,
+        "color": "White",
+        "license_plate": "EV456"
+      }
+    ]
+  },
+  {
+    "id": "person_003",
+    "first_name": "Ahmed",
+    "last_name": "Hassan",
+    "full_name": "Ahmed Hassan",
+    "work_phone": "+44-20-7946-0958",
+    "mobile_phone": "+44-77-1234-5678",
+    "location": {
+      "city": "London",
+      "state": "England",
+      "country": "UK",
+      "coordinates": {
+        "lat": 51.5074,
+        "lon": -0.1278
+      }
+    },
+    "gender": "male",
+    "picture": {
+      "url": "https://example.com/images/ahmed_hassan.jpg",
+      "thumbnail": "https://example.com/images/ahmed_hassan_thumb.jpg"
+    },
+    "address": {
+      "street": "789 Regent Street",
+      "city": "London",
+      "state": "England",
+      "postal_code": "W1B 4HA",
+      "country": "UK"
+    },
+    "interests": ["football", "chess", "astronomy", "cooking"],
+    "professional_experience": [
+      {
+        "company": "Financial Solutions Ltd",
+        "position": "Data Analyst",
+        "start_date": "2021-06-01",
+        "end_date": null,
+        "description": "Analyzing financial markets and creating predictive models",
+        "skills": ["Python", "SQL", "Tableau", "Machine Learning"]
+      }
+    ],
+    "cars": [
+      {
+        "make": "BMW",
+        "model": "X3",
+        "year": 2021,
+        "color": "Black",
+        "license_plate": "LN21ABC"
+      }
+    ]
+  },
+  {
+    "id": "person_004",
+    "first_name": "Maria",
+    "last_name": "Garcia",
+    "full_name": "Maria Garcia",
+    "work_phone": "+34-91-123-4567",
+    "mobile_phone": "+34-67-890-1234",
+    "location": {
+      "city": "Madrid",
+      "state": "Madrid",
+      "country": "Spain",
+      "coordinates": {
+        "lat": 40.4168,
+        "lon": -3.7038
+      }
+    },
+    "gender": "female",
+    "picture": {
+      "url": "https://example.com/images/maria_garcia.jpg",
+      "thumbnail": "https://example.com/images/maria_garcia_thumb.jpg"
+    },
+    "address": {
+      "street": "Calle de Alcalá 123",
+      "city": "Madrid",
+      "state": "Madrid",
+      "postal_code": "28009",
+      "country": "Spain"
+    },
+    "interests": ["flamenco", "painting", "literature", "architecture"],
+    "professional_experience": [
+      {
+        "company": "Arquitectura Moderna",
+        "position": "Architect",
+        "start_date": "2018-09-01",
+        "end_date": null,
+        "description": "Designing sustainable residential and commercial buildings",
+        "skills": ["AutoCAD", "Revit", "SketchUp", "Sustainable Design"]
+      }
+    ],
+    "cars": [
+      {
+        "make": "SEAT",
+        "model": "Leon",
+        "year": 2020,
+        "color": "Red",
+        "license_plate": "1234 ABC"
+      }
+    ]
+  },
+  {
+    "id": "person_005",
+    "first_name": "Hiroshi",
+    "last_name": "Tanaka",
+    "full_name": "Hiroshi Tanaka",
+    "work_phone": "+81-3-1234-5678",
+    "mobile_phone": "+81-90-8765-4321",
+    "location": {
+      "city": "Tokyo",
+      "state": "Tokyo",
+      "country": "Japan",
+      "coordinates": {
+        "lat": 35.6762,
+        "lon": 139.6503
+      }
+    },
+    "gender": "male",
+    "picture": {
+      "url": "https://example.com/images/hiroshi_tanaka.jpg",
+      "thumbnail": "https://example.com/images/hiroshi_tanaka_thumb.jpg"
+    },
+    "address": {
+      "street": "1-1-1 Shibuya",
+      "city": "Tokyo",
+      "state": "Tokyo",
+      "postal_code": "150-0002",
+      "country": "Japan"
+    },
+    "interests": ["martial arts", "robotics", "gardening", "meditation"],
+    "professional_experience": [
+      {
+        "company": "Robotics Japan",
+        "position": "Robotics Engineer",
+        "start_date": "2017-04-01",
+        "end_date": "2021-03-31",
+        "description": "Developed autonomous navigation systems for industrial robots",
+        "skills": ["C++", "ROS", "Computer Vision", "Machine Learning"]
+      },
+      {
+        "company": "AI Innovations",
+        "position": "Senior AI Engineer",
+        "start_date": "2021-04-01",
+        "end_date": null,
+        "description": "Leading AI research and development for consumer applications",
+        "skills": ["Python", "TensorFlow", "PyTorch", "Computer Vision"]
+      }
+    ],
+    "cars": [
+      {
+        "make": "Honda",
+        "model": "Civic",
+        "year": 2022,
+        "color": "Blue",
+        "license_plate": "品川 123-45"
+      }
+    ]
+  },
+  {
+    "id": "person_006",
+    "first_name": "Emma",
+    "last_name": "Wilson",
+    "full_name": "Emma Wilson",
+    "work_phone": "+61-2-9876-5432",
+    "mobile_phone": "+61-4-1234-5678",
+    "location": {
+      "city": "Sydney",
+      "state": "NSW",
+      "country": "Australia",
+      "coordinates": {
+        "lat": -33.8688,
+        "lon": 151.2093
+      }
+    },
+    "gender": "female",
+    "picture": {
+      "url": "https://example.com/images/emma_wilson.jpg",
+      "thumbnail": "https://example.com/images/emma_wilson_thumb.jpg"
+    },
+    "address": {
+      "street": "456 George Street",
+      "city": "Sydney",
+      "state": "NSW",
+      "postal_code": "2000",
+      "country": "Australia"
+    },
+    "interests": ["surfing", "environmental conservation", "rock climbing", "photography"],
+    "professional_experience": [
+      {
+        "company": "EcoSolutions Australia",
+        "position": "Environmental Scientist",
+        "start_date": "2020-02-01",
+        "end_date": null,
+        "description": "Conducting environmental impact assessments and conservation research",
+        "skills": ["GIS", "Environmental Modeling", "Data Analysis", "Field Research"]
+      }
+    ],
+    "cars": [
+      {
+        "make": "Subaru",
+        "model": "Outback",
+        "year": 2021,
+        "color": "Green",
+        "license_plate": "ABC123"
+      }
+    ]
+  },
+  {
+    "id": "person_007",
+    "first_name": "Pierre",
+    "last_name": "Dubois",
+    "full_name": "Pierre Dubois",
+    "work_phone": "+33-1-23-45-67-89",
+    "mobile_phone": "+33-6-12-34-56-78",
+    "location": {
+      "city": "Paris",
+      "state": "Île-de-France",
+      "country": "France",
+      "coordinates": {
+        "lat": 48.8566,
+        "lon": 2.3522
+      }
+    },
+    "gender": "male",
+    "picture": {
+      "url": "https://example.com/images/pierre_dubois.jpg",
+      "thumbnail": "https://example.com/images/pierre_dubois_thumb.jpg"
+    },
+    "address": {
+      "street": "123 Champs-Élysées",
+      "city": "Paris",
+      "state": "Île-de-France",
+      "postal_code": "75008",
+      "country": "France"
+    },
+    "interests": ["wine", "classical music", "history", "cycling"],
+    "professional_experience": [
+      {
+        "company": "Banque de France",
+        "position": "Financial Analyst",
+        "start_date": "2019-01-15",
+        "end_date": "2022-12-31",
+        "description": "Analyzed market trends and prepared financial reports",
+        "skills": ["Excel", "Bloomberg", "Financial Modeling", "Risk Analysis"]
+      },
+      {
+        "company": "Investment Partners",
+        "position": "Portfolio Manager",
+        "start_date": "2023-01-01",
+        "end_date": null,
+        "description": "Managing investment portfolios for high-net-worth clients",
+        "skills": ["Portfolio Management", "Risk Assessment", "Bloomberg", "Python"]
+      }
+    ],
+    "cars": [
+      {
+        "make": "Peugeot",
+        "model": "508",
+        "year": 2023,
+        "color": "Grey",
+        "license_plate": "AB-123-CD"
+      }
+    ]
+  },
+  {
+    "id": "person_008",
+    "first_name": "Priya",
+    "last_name": "Sharma",
+    "full_name": "Priya Sharma",
+    "work_phone": "+91-11-2345-6789",
+    "mobile_phone": "+91-98765-43210",
+    "location": {
+      "city": "Bangalore",
+      "state": "Karnataka",
+      "country": "India",
+      "coordinates": {
+        "lat": 12.9716,
+        "lon": 77.5946
+      }
+    },
+    "gender": "female",
+    "picture": {
+      "url": "https://example.com/images/priya_sharma.jpg",
+      "thumbnail": "https://example.com/images/priya_sharma_thumb.jpg"
+    },
+    "address": {
+      "street": "MG Road, Brigade Towers",
+      "city": "Bangalore",
+      "state": "Karnataka",
+      "postal_code": "560001",
+      "country": "India"
+    },
+    "interests": ["bollywood", "cricket", "cooking", "technology"],
+    "professional_experience": [
+      {
+        "company": "InfoTech Solutions",
+        "position": "DevOps Engineer",
+        "start_date": "2021-08-01",
+        "end_date": null,
+        "description": "Managing cloud infrastructure and CI/CD pipelines",
+        "skills": ["AWS", "Docker", "Kubernetes", "Jenkins", "Terraform"]
+      }
+    ],
+    "cars": [
+      {
+        "make": "Maruti Suzuki",
+        "model": "Swift",
+        "year": 2022,
+        "color": "White",
+        "license_plate": "KA-01-AB-1234"
+      }
+    ]
+  },
+  {
+    "id": "person_009",
+    "first_name": "Lars",
+    "last_name": "Andersson",
+    "full_name": "Lars Andersson",
+    "work_phone": "+46-8-123-456-78",
+    "mobile_phone": "+46-70-123-45-67",
+    "location": {
+      "city": "Stockholm",
+      "state": "Stockholm",
+      "country": "Sweden",
+      "coordinates": {
+        "lat": 59.3293,
+        "lon": 18.0686
+      }
+    },
+    "gender": "male",
+    "picture": {
+      "url": "https://example.com/images/lars_andersson.jpg",
+      "thumbnail": "https://example.com/images/lars_andersson_thumb.jpg"
+    },
+    "address": {
+      "street": "Drottninggatan 456",
+      "city": "Stockholm",
+      "state": "Stockholm",
+      "postal_code": "111 51",
+      "country": "Sweden"
+    },
+    "interests": ["skiing", "sauna", "design", "sustainability"],
+    "professional_experience": [
+      {
+        "company": "Green Energy Nordic",
+        "position": "Sustainability Consultant",
+        "start_date": "2020-06-01",
+        "end_date": null,
+        "description": "Advising companies on sustainable business practices and green energy solutions",
+        "skills": ["Sustainability Assessment", "Project Management", "Data Analysis", "Renewable Energy"]
+      }
+    ],
+    "cars": [
+      {
+        "make": "Volvo",
+        "model": "XC90",
+        "year": 2023,
+        "color": "Silver",
+        "license_plate": "ABC123"
+      }
+    ]
+  },
+  {
+    "id": "person_010",
+    "first_name": "Isabella",
+    "last_name": "Rossi",
+    "full_name": "Isabella Rossi",
+    "work_phone": "+39-06-1234-5678",
+    "mobile_phone": "+39-347-123-4567",
+    "location": {
+      "city": "Rome",
+      "state": "Lazio",
+      "country": "Italy",
+      "coordinates": {
+        "lat": 41.9028,
+        "lon": 12.4964
+      }
+    },
+    "gender": "female",
+    "picture": {
+      "url": "https://example.com/images/isabella_rossi.jpg",
+      "thumbnail": "https://example.com/images/isabella_rossi_thumb.jpg"
+    },
+    "address": {
+      "street": "Via del Corso 789",
+      "city": "Rome",
+      "state": "Lazio",
+      "postal_code": "00186",
+      "country": "Italy"
+    },
+    "interests": ["art history", "opera", "cooking", "fashion"],
+    "professional_experience": [
+      {
+        "company": "Museo Nazionale Romano",
+        "position": "Art Curator",
+        "start_date": "2018-03-01",
+        "end_date": "2021-09-30",
+        "description": "Curated exhibitions of ancient Roman art and artifacts",
+        "skills": ["Art History", "Exhibition Design", "Research", "Public Speaking"]
+      },
+      {
+        "company": "Renaissance Art Gallery",
+        "position": "Senior Curator",
+        "start_date": "2021-10-01",
+        "end_date": null,
+        "description": "Leading curatorial team for Renaissance and contemporary art exhibitions",
+        "skills": ["Curatorial Practice", "Art Authentication", "Gallery Management", "Research"]
+      }
+    ],
+    "cars": [
+      {
+        "make": "Alfa Romeo",
+        "model": "Giulia",
+        "year": 2022,
+        "color": "Red",
+        "license_plate": "RM123AB"
+      },
+      {
+        "make": "Vespa",
+        "model": "Primavera",
+        "year": 2021,
+        "color": "Yellow",
+        "license_plate": "RM456CD"
+      }
+    ]
+  }
+] 

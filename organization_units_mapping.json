@@ -1,0 +1,137 @@
+{
+  "settings": {
+    "number_of_shards": 1,
+    "number_of_replicas": 1,
+    "analysis": {
+      "analyzer": {
+        "org_analyzer": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": ["lowercase", "asciifolding"]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "id": {
+        "type": "keyword"
+      },
+      "name": {
+        "type": "text",
+        "analyzer": "org_analyzer",
+        "fields": {
+          "keyword": {
+            "type": "keyword"
+          }
+        }
+      },
+      "type": {
+        "type": "keyword"
+      },
+      "level": {
+        "type": "integer",
+        "index": true
+      },
+      "parent_id": {
+        "type": "keyword"
+      },
+      "hierarchy_path": {
+        "type": "nested",
+        "properties": {
+          "level": {
+            "type": "integer"
+          },
+          "id": {
+            "type": "keyword"
+          },
+          "name": {
+            "type": "keyword"
+          }
+        }
+      },
+      "hierarchy_names": {
+        "type": "keyword"
+      },
+      "persons": {
+        "type": "nested",
+        "properties": {
+          "person_id": {
+            "type": "keyword"
+          },
+          "name": {
+            "type": "text",
+            "analyzer": "org_analyzer",
+            "fields": {
+              "keyword": {
+                "type": "keyword"
+              }
+            }
+          },
+          "role": {
+            "type": "keyword"
+          },
+          "email": {
+            "type": "keyword"
+          },
+          "is_manager": {
+            "type": "boolean"
+          }
+        }
+      },
+      "manager": {
+        "type": "object",
+        "properties": {
+          "person_id": {
+            "type": "keyword"
+          },
+          "name": {
+            "type": "keyword"
+          },
+          "email": {
+            "type": "keyword"
+          }
+        }
+      },
+      "description": {
+        "type": "text",
+        "analyzer": "org_analyzer"
+      },
+      "location": {
+        "type": "object",
+        "properties": {
+          "building": {
+            "type": "keyword"
+          },
+          "floor": {
+            "type": "keyword"
+          },
+          "room": {
+            "type": "keyword"
+          },
+          "city": {
+            "type": "keyword"
+          },
+          "country": {
+            "type": "keyword"
+          }
+        }
+      },
+      "budget": {
+        "type": "long"
+      },
+      "created_date": {
+        "type": "date"
+      },
+      "last_updated": {
+        "type": "date"
+      },
+      "status": {
+        "type": "keyword"
+      },
+      "tags": {
+        "type": "keyword"
+      }
+    }
+  }
+} 

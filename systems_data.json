@@ -1,0 +1,217 @@
+[
+  {
+    "id": "sys_001",
+    "name": "Customer Management System",
+    "description": "A comprehensive CRM system for managing customer relationships, sales pipelines, and customer support tickets. Includes advanced analytics and reporting capabilities.",
+    "link": "https://crm.company.com",
+    "owners": [
+      {
+        "name": "John Smith",
+        "email": "john.smith@company.com",
+        "role": "System Owner"
+      },
+      {
+        "name": "Sarah Johnson",
+        "email": "sarah.johnson@company.com",
+        "role": "Technical Lead"
+      }
+    ],
+    "created_date": "2023-01-15",
+    "last_updated": "2024-11-15",
+    "status": "active",
+    "tags": ["crm", "customer", "sales", "support"]
+  },
+  {
+    "id": "sys_002",
+    "name": "Human Resources Portal",
+    "description": "Employee self-service portal for HR operations including payroll, benefits, leave management, and performance reviews.",
+    "link": "https://hr.company.com",
+    "owners": [
+      {
+        "name": "Emily Chen",
+        "email": "emily.chen@company.com",
+        "role": "System Owner"
+      },
+      {
+        "name": "Michael Brown",
+        "email": "michael.brown@company.com",
+        "role": "Developer"
+      }
+    ],
+    "created_date": "2022-08-20",
+    "last_updated": "2024-10-30",
+    "status": "active",
+    "tags": ["hr", "employee", "payroll", "benefits"]
+  },
+  {
+    "id": "sys_003",
+    "name": "Inventory Management System",
+    "description": "Real-time inventory tracking system with automated reordering, supplier management, and warehouse optimization features.",
+    "link": "https://inventory.company.com",
+    "owners": [
+      {
+        "name": "David Wilson",
+        "email": "david.wilson@company.com",
+        "role": "System Owner"
+      },
+      {
+        "name": "Lisa Anderson",
+        "email": "lisa.anderson@company.com",
+        "role": "Business Analyst"
+      }
+    ],
+    "created_date": "2023-05-10",
+    "last_updated": "2024-11-20",
+    "status": "active",
+    "tags": ["inventory", "warehouse", "suppliers", "logistics"]
+  },
+  {
+    "id": "sys_004",
+    "name": "Financial Reporting Dashboard",
+    "description": "Executive dashboard providing real-time financial metrics, budget tracking, and compliance reporting for stakeholders.",
+    "link": "https://finance.company.com",
+    "owners": [
+      {
+        "name": "Robert Davis",
+        "email": "robert.davis@company.com",
+        "role": "System Owner"
+      },
+      {
+        "name": "Jennifer Taylor",
+        "email": "jennifer.taylor@company.com",
+        "role": "Financial Analyst"
+      }
+    ],
+    "created_date": "2023-02-28",
+    "last_updated": "2024-11-10",
+    "status": "active",
+    "tags": ["finance", "reporting", "dashboard", "compliance"]
+  },
+  {
+    "id": "sys_005",
+    "name": "Project Management Tool",
+    "description": "Collaborative project management platform with task tracking, resource allocation, time tracking, and team collaboration features.",
+    "link": "https://projects.company.com",
+    "owners": [
+      {
+        "name": "Amanda Garcia",
+        "email": "amanda.garcia@company.com",
+        "role": "System Owner"
+      },
+      {
+        "name": "James Martinez",
+        "email": "james.martinez@company.com",
+        "role": "Product Manager"
+      }
+    ],
+    "created_date": "2022-11-15",
+    "last_updated": "2024-11-25",
+    "status": "active",
+    "tags": ["project", "management", "collaboration", "tasks"]
+  },
+  {
+    "id": "sys_006",
+    "name": "Legacy Accounting System",
+    "description": "Older accounting system still used for specific legacy processes. Scheduled for migration to the new financial platform.",
+    "link": "https://legacy-accounting.company.com",
+    "owners": [
+      {
+        "name": "Thomas Anderson",
+        "email": "thomas.anderson@company.com",
+        "role": "System Owner"
+      }
+    ],
+    "created_date": "2018-03-12",
+    "last_updated": "2024-06-15",
+    "status": "deprecated",
+    "tags": ["accounting", "legacy", "migration", "finance"]
+  },
+  {
+    "id": "sys_007",
+    "name": "Customer Support Portal",
+    "description": "Self-service customer support portal with knowledge base, ticket submission, and live chat functionality.",
+    "link": "https://support.company.com",
+    "owners": [
+      {
+        "name": "Maria Rodriguez",
+        "email": "maria.rodriguez@company.com",
+        "role": "System Owner"
+      },
+      {
+        "name": "Kevin Lee",
+        "email": "kevin.lee@company.com",
+        "role": "Support Manager"
+      }
+    ],
+    "created_date": "2023-07-08",
+    "last_updated": "2024-11-12",
+    "status": "active",
+    "tags": ["support", "customer", "tickets", "chat"]
+  },
+  {
+    "id": "sys_008",
+    "name": "Business Intelligence Platform",
+    "description": "Advanced analytics and business intelligence platform with data visualization, predictive analytics, and automated reporting.",
+    "link": "https://bi.company.com",
+    "owners": [
+      {
+        "name": "Patricia White",
+        "email": "patricia.white@company.com",
+        "role": "System Owner"
+      },
+      {
+        "name": "Christopher Johnson",
+        "email": "christopher.johnson@company.com",
+        "role": "Data Analyst"
+      }
+    ],
+    "created_date": "2023-09-22",
+    "last_updated": "2024-11-18",
+    "status": "active",
+    "tags": ["analytics", "business intelligence", "reporting", "data"]
+  },
+  {
+    "id": "sys_009",
+    "name": "Asset Management System",
+    "description": "Corporate asset tracking and management system for IT equipment, furniture, and other company assets.",
+    "link": "https://assets.company.com",
+    "owners": [
+      {
+        "name": "Steven Thompson",
+        "email": "steven.thompson@company.com",
+        "role": "System Owner"
+      },
+      {
+        "name": "Nancy Wilson",
+        "email": "nancy.wilson@company.com",
+        "role": "Asset Manager"
+      }
+    ],
+    "created_date": "2023-04-18",
+    "last_updated": "2024-10-28",
+    "status": "active",
+    "tags": ["assets", "tracking", "equipment", "management"]
+  },
+  {
+    "id": "sys_010",
+    "name": "Document Management System",
+    "description": "Centralized document storage and management system with version control, access permissions, and full-text search capabilities.",
+    "link": "https://docs.company.com",
+    "owners": [
+      {
+        "name": "Barbara Miller",
+        "email": "barbara.miller@company.com",
+        "role": "System Owner"
+      },
+      {
+        "name": "Daniel Davis",
+        "email": "daniel.davis@company.com",
+        "role": "Information Architect"
+      }
+    ],
+    "created_date": "2022-12-05",
+    "last_updated": "2024-11-08",
+    "status": "active",
+    "tags": ["documents", "storage", "version control", "search"]
+  }
+] 

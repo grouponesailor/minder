@@ -1,0 +1,49 @@
+{
+  "rules": [
+    {
+      "type": "person_search",
+      "keywords": ["מפתח", "מפתחת", "מנהל", "מנהלת", "אנליסט", "מומחה", "איש", "אשת"],
+      "fields": ["role", "title"]
+    },
+    {
+      "type": "technology_tag",
+      "keywords": ["React", "Python", "Node.js", "PHP", "AWS", "BI", "SQL"],
+      "fields": ["skills", "tags", "tech_stack"]
+    },
+    {
+      "type": "organizational_affiliation",
+      "keywords": ["צוות", "יחידה", "מחלקה", "ארגון", "קבוצה"],
+      "fields": ["team", "department", "organization"]
+    },
+    {
+      "type": "service_provider",
+      "patterns": ["למי פונים ב*?", "מי אחראי על *", "מי מטפל ב*"],
+      "fields": ["service_area", "responsible_person"]
+    },
+    {
+      "type": "experience",
+      "patterns": ["ניסיון", "שנות ניסיון", "ניסיון בפרויקטים"],
+      "fields": ["experience_years", "project_history"]
+    },
+    {
+      "type": "tags",
+      "keywords": ["צרפתית", "אנגלית", "מדריך", "חברתי", "נעים", "רשיון נהיגה"],
+      "fields": ["tags"]
+    },
+    {
+      "type": "proximity",
+      "keywords": ["צוות שלי", "צוות אחר", "קרוב אלי", "מחלקה אחרת"],
+      "fields": ["org_proximity"]
+    },
+    {
+      "type": "visual_features",
+      "patterns": ["זקן", "עיניים כחולות", "שיער ארוך", "משקפיים"],
+      "fields": ["appearance"]
+    },
+    {
+      "type": "system_search",
+      "keywords": ["מערכת", "כלי", "תשתית", "אפליקציה"],
+      "fields": ["system_name", "system_function"]
+    }
+  ]
+}

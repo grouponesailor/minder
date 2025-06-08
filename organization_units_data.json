@@ -1,0 +1,493 @@
+[
+  {
+    "id": "org_001",
+    "name": "Global Corporation",
+    "type": "corporation",
+    "level": 1,
+    "parent_id": null,
+    "hierarchy_path": [
+      {
+        "level": 1,
+        "id": "org_001",
+        "name": "Global Corporation"
+      }
+    ],
+    "hierarchy_names": ["Global Corporation"],
+    "persons": [
+      {
+        "person_id": "person_001",
+        "name": "John Doe",
+        "role": "CEO",
+        "email": "john.doe@company.com",
+        "is_manager": true
+      },
+      {
+        "person_id": "person_002",
+        "name": "Sarah Johnson",
+        "role": "Executive Assistant",
+        "email": "sarah.johnson@company.com",
+        "is_manager": false
+      }
+    ],
+    "manager": {
+      "person_id": "person_001",
+      "name": "John Doe",
+      "email": "john.doe@company.com"
+    },
+    "description": "Global technology corporation headquarters",
+    "location": {
+      "building": "Tower A",
+      "floor": "50",
+      "room": "Executive Suite",
+      "city": "New York",
+      "country": "USA"
+    },
+    "budget": 1000000000,
+    "created_date": "2020-01-01",
+    "last_updated": "2024-11-25",
+    "status": "active",
+    "tags": ["headquarters", "executive", "global"]
+  },
+  {
+    "id": "org_002",
+    "name": "Technology Division",
+    "type": "division",
+    "level": 2,
+    "parent_id": "org_001",
+    "hierarchy_path": [
+      {
+        "level": 1,
+        "id": "org_001",
+        "name": "Global Corporation"
+      },
+      {
+        "level": 2,
+        "id": "org_002",
+        "name": "Technology Division"
+      }
+    ],
+    "hierarchy_names": ["Global Corporation", "Technology Division"],
+    "persons": [
+      {
+        "person_id": "person_003",
+        "name": "Emily Chen",
+        "role": "CTO",
+        "email": "emily.chen@company.com",
+        "is_manager": true
+      },
+      {
+        "person_id": "person_004",
+        "name": "Michael Brown",
+        "role": "VP of Engineering",
+        "email": "michael.brown@company.com",
+        "is_manager": true
+      }
+    ],
+    "manager": {
+      "person_id": "person_003",
+      "name": "Emily Chen",
+      "email": "emily.chen@company.com"
+    },
+    "description": "Technology and engineering division",
+    "location": {
+      "building": "Tower B",
+      "floor": "10-15",
+      "room": "Multiple",
+      "city": "New York",
+      "country": "USA"
+    },
+    "budget": 500000000,
+    "created_date": "2020-01-01",
+    "last_updated": "2024-11-20",
+    "status": "active",
+    "tags": ["technology", "engineering", "innovation"]
+  },
+  {
+    "id": "org_003",
+    "name": "Software Engineering Department",
+    "type": "department",
+    "level": 3,
+    "parent_id": "org_002",
+    "hierarchy_path": [
+      {
+        "level": 1,
+        "id": "org_001",
+        "name": "Global Corporation"
+      },
+      {
+        "level": 2,
+        "id": "org_002",
+        "name": "Technology Division"
+      },
+      {
+        "level": 3,
+        "id": "org_003",
+        "name": "Software Engineering Department"
+      }
+    ],
+    "hierarchy_names": ["Global Corporation", "Technology Division", "Software Engineering Department"],
+    "persons": [
+      {
+        "person_id": "person_005",
+        "name": "David Wilson",
+        "role": "Engineering Manager",
+        "email": "david.wilson@company.com",
+        "is_manager": true
+      },
+      {
+        "person_id": "person_006",
+        "name": "Lisa Anderson",
+        "role": "Senior Software Engineer",
+        "email": "lisa.anderson@company.com",
+        "is_manager": false
+      }
+    ],
+    "manager": {
+      "person_id": "person_005",
+      "name": "David Wilson",
+      "email": "david.wilson@company.com"
+    },
+    "description": "Software development and engineering",
+    "location": {
+      "building": "Tower B",
+      "floor": "12",
+      "room": "1200-1250",
+      "city": "New York",
+      "country": "USA"
+    },
+    "budget": 50000000,
+    "created_date": "2020-01-01",
+    "last_updated": "2024-11-15",
+    "status": "active",
+    "tags": ["software", "development", "engineering"]
+  },
+  {
+    "id": "org_004",
+    "name": "Frontend Development Team",
+    "type": "team",
+    "level": 4,
+    "parent_id": "org_003",
+    "hierarchy_path": [
+      {
+        "level": 1,
+        "id": "org_001",
+        "name": "Global Corporation"
+      },
+      {
+        "level": 2,
+        "id": "org_002",
+        "name": "Technology Division"
+      },
+      {
+        "level": 3,
+        "id": "org_003",
+        "name": "Software Engineering Department"
+      },
+      {
+        "level": 4,
+        "id": "org_004",
+        "name": "Frontend Development Team"
+      }
+    ],
+    "hierarchy_names": ["Global Corporation", "Technology Division", "Software Engineering Department", "Frontend Development Team"],
+    "persons": [
+      {
+        "person_id": "person_007",
+        "name": "Robert Davis",
+        "role": "Team Lead",
+        "email": "robert.davis@company.com",
+        "is_manager": true
+      },
+      {
+        "person_id": "person_008",
+        "name": "Jennifer Taylor",
+        "role": "Frontend Developer",
+        "email": "jennifer.taylor@company.com",
+        "is_manager": false
+      },
+      {
+        "person_id": "person_009",
+        "name": "Amanda Garcia",
+        "role": "UI/UX Designer",
+        "email": "amanda.garcia@company.com",
+        "is_manager": false
+      }
+    ],
+    "manager": {
+      "person_id": "person_007",
+      "name": "Robert Davis",
+      "email": "robert.davis@company.com"
+    },
+    "description": "Frontend web and mobile application development",
+    "location": {
+      "building": "Tower B",
+      "floor": "12",
+      "room": "1220-1230",
+      "city": "New York",
+      "country": "USA"
+    },
+    "budget": 5000000,
+    "created_date": "2020-06-01",
+    "last_updated": "2024-11-10",
+    "status": "active",
+    "tags": ["frontend", "ui", "ux", "web", "mobile"]
+  },
+  {
+    "id": "org_005",
+    "name": "React Development Squad",
+    "type": "squad",
+    "level": 5,
+    "parent_id": "org_004",
+    "hierarchy_path": [
+      {
+        "level": 1,
+        "id": "org_001",
+        "name": "Global Corporation"
+      },
+      {
+        "level": 2,
+        "id": "org_002",
+        "name": "Technology Division"
+      },
+      {
+        "level": 3,
+        "id": "org_003",
+        "name": "Software Engineering Department"
+      },
+      {
+        "level": 4,
+        "id": "org_004",
+        "name": "Frontend Development Team"
+      },
+      {
+        "level": 5,
+        "id": "org_005",
+        "name": "React Development Squad"
+      }
+    ],
+    "hierarchy_names": ["Global Corporation", "Technology Division", "Software Engineering Department", "Frontend Development Team", "React Development Squad"],
+    "persons": [
+      {
+        "person_id": "person_010",
+        "name": "James Martinez",
+        "role": "Squad Leader",
+        "email": "james.martinez@company.com",
+        "is_manager": true
+      },
+      {
+        "person_id": "person_011",
+        "name": "Maria Rodriguez",
+        "role": "React Developer",
+        "email": "maria.rodriguez@company.com",
+        "is_manager": false
+      },
+      {
+        "person_id": "person_012",
+        "name": "Kevin Lee",
+        "role": "React Developer",
+        "email": "kevin.lee@company.com",
+        "is_manager": false
+      }
+    ],
+    "manager": {
+      "person_id": "person_010",
+      "name": "James Martinez",
+      "email": "james.martinez@company.com"
+    },
+    "description": "Specialized React.js development squad",
+    "location": {
+      "building": "Tower B",
+      "floor": "12",
+      "room": "1225",
+      "city": "New York",
+      "country": "USA"
+    },
+    "budget": 1000000,
+    "created_date": "2021-03-01",
+    "last_updated": "2024-11-05",
+    "status": "active",
+    "tags": ["react", "javascript", "frontend", "squad"]
+  },
+  {
+    "id": "org_006",
+    "name": "Component Library Pod",
+    "type": "pod",
+    "level": 6,
+    "parent_id": "org_005",
+    "hierarchy_path": [
+      {
+        "level": 1,
+        "id": "org_001",
+        "name": "Global Corporation"
+      },
+      {
+        "level": 2,
+        "id": "org_002",
+        "name": "Technology Division"
+      },
+      {
+        "level": 3,
+        "id": "org_003",
+        "name": "Software Engineering Department"
+      },
+      {
+        "level": 4,
+        "id": "org_004",
+        "name": "Frontend Development Team"
+      },
+      {
+        "level": 5,
+        "id": "org_005",
+        "name": "React Development Squad"
+      },
+      {
+        "level": 6,
+        "id": "org_006",
+        "name": "Component Library Pod"
+      }
+    ],
+    "hierarchy_names": ["Global Corporation", "Technology Division", "Software Engineering Department", "Frontend Development Team", "React Development Squad", "Component Library Pod"],
+    "persons": [
+      {
+        "person_id": "person_013",
+        "name": "Patricia White",
+        "role": "Lead Developer",
+        "email": "patricia.white@company.com",
+        "is_manager": true
+      },
+      {
+        "person_id": "person_014",
+        "name": "Christopher Johnson",
+        "role": "Component Developer",
+        "email": "christopher.johnson@company.com",
+        "is_manager": false
+      }
+    ],
+    "manager": {
+      "person_id": "person_013",
+      "name": "Patricia White",
+      "email": "patricia.white@company.com"
+    },
+    "description": "Development and maintenance of reusable React component library",
+    "location": {
+      "building": "Tower B",
+      "floor": "12",
+      "room": "1225A",
+      "city": "New York",
+      "country": "USA"
+    },
+    "budget": 200000,
+    "created_date": "2022-01-01",
+    "last_updated": "2024-10-30",
+    "status": "active",
+    "tags": ["components", "library", "reusable", "react"]
+  },
+  {
+    "id": "org_007",
+    "name": "Human Resources Division",
+    "type": "division",
+    "level": 2,
+    "parent_id": "org_001",
+    "hierarchy_path": [
+      {
+        "level": 1,
+        "id": "org_001",
+        "name": "Global Corporation"
+      },
+      {
+        "level": 2,
+        "id": "org_007",
+        "name": "Human Resources Division"
+      }
+    ],
+    "hierarchy_names": ["Global Corporation", "Human Resources Division"],
+    "persons": [
+      {
+        "person_id": "person_015",
+        "name": "Steven Thompson",
+        "role": "CHRO",
+        "email": "steven.thompson@company.com",
+        "is_manager": true
+      },
+      {
+        "person_id": "person_016",
+        "name": "Nancy Wilson",
+        "role": "HR Manager",
+        "email": "nancy.wilson@company.com",
+        "is_manager": true
+      }
+    ],
+    "manager": {
+      "person_id": "person_015",
+      "name": "Steven Thompson",
+      "email": "steven.thompson@company.com"
+    },
+    "description": "Human resources and talent management",
+    "location": {
+      "building": "Tower A",
+      "floor": "5",
+      "room": "500-550",
+      "city": "New York",
+      "country": "USA"
+    },
+    "budget": 100000000,
+    "created_date": "2020-01-01",
+    "last_updated": "2024-11-18",
+    "status": "active",
+    "tags": ["hr", "talent", "recruitment", "benefits"]
+  },
+  {
+    "id": "org_008",
+    "name": "Finance Division",
+    "type": "division",
+    "level": 2,
+    "parent_id": "org_001",
+    "hierarchy_path": [
+      {
+        "level": 1,
+        "id": "org_001",
+        "name": "Global Corporation"
+      },
+      {
+        "level": 2,
+        "id": "org_008",
+        "name": "Finance Division"
+      }
+    ],
+    "hierarchy_names": ["Global Corporation", "Finance Division"],
+    "persons": [
+      {
+        "person_id": "person_017",
+        "name": "Barbara Miller",
+        "role": "CFO",
+        "email": "barbara.miller@company.com",
+        "is_manager": true
+      },
+      {
+        "person_id": "person_018",
+        "name": "Daniel Davis",
+        "role": "Finance Manager",
+        "email": "daniel.davis@company.com",
+        "is_manager": true
+      }
+    ],
+    "manager": {
+      "person_id": "person_017",
+      "name": "Barbara Miller",
+      "email": "barbara.miller@company.com"
+    },
+    "description": "Financial planning, accounting, and corporate finance",
+    "location": {
+      "building": "Tower A",
+      "floor": "8",
+      "room": "800-850",
+      "city": "New York",
+      "country": "USA"
+    },
+    "budget": 75000000,
+    "created_date": "2020-01-01",
+    "last_updated": "2024-11-22",
+    "status": "active",
+    "tags": ["finance", "accounting", "budget", "planning"]
+  }
+] 
