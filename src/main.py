@@ -91,104 +91,203 @@ def determine_search_type(query: str) -> Dict[str, Any]:
     return {"type": "universal", "fields": ["all"]}
 
 def build_multi_index_query(query: str, search_rule: Dict[str, Any]) -> Dict[str, Any]:
-    """Build comprehensive Elasticsearch query that searches across all indexes"""
+    """Build case-insensitive Elasticsearch query with exact string matching - no fuzzy matching"""
     
-    # Universal search query that adapts to different document types
+    # Normalize query for case-insensitive matching
+    query_lower = query.lower()
+    
+    # Case-insensitive query focusing on exact substring matching
     universal_query = {
         "bool": {
             "should": [
-                # Person-specific searches (person_dataset)
+                # Case-insensitive exact keyword matches using regexp
                 {
-                    "multi_match": {
-                        "query": query,
-                        "fields": [
-                            "first_name^5", "last_name^5", "full_name^6",
-                            "first_name.keyword^7", "last_name.keyword^7", "full_name.keyword^8"
-                        ],
-                        "type": "best_fields",
-                        "fuzziness": "AUTO",
-                        "boost": 3.0
-                    }
-                },
-                
-                # Organization-specific searches (organization_units)
-                {
-                    "multi_match": {
-                        "query": query,
-                        "fields": [
-                            "name^5", "name.keyword^6", "type^3", "description^2",
-                            "hierarchy_names^4", "manager.name^3"
-                        ],
-                        "type": "best_fields",
-                        "fuzziness": "AUTO",
-                        "boost": 2.5
-                    }
-                },
-                
-                # System-specific searches (systems_index)
-                {
-                    "multi_match": {
-                        "query": query,
-                        "fields": [
-                            "name^5", "name.keyword^6", "description^3", "link^2",
-                            "tags^3", "status^2"
-                        ],
-                        "type": "best_fields",
-                        "fuzziness": "AUTO",
-                        "boost": 2.5
-                    }
-                },
-                
-                # Contact and location searches (persons and organizations)
-                {
-                    "multi_match": {
-                        "query": query,
-                        "fields": [
-                            "work_phone", "mobile_phone", "email",
-                            "location.city^3", "location.state^2", "location.country^2",
-                            "address.city^2", "address.street", "location.building"
-                        ],
-                        "type": "best_fields",
-                        "fuzziness": "AUTO",
-                        "boost": 2.0
-                    }
-                },
-                
-                # General attributes
-                {
-                    "multi_match": {
-                        "query": query,
-                        "fields": [
-                            "interests^2", "gender"
-                        ],
-                        "type": "best_fields",
-                        "fuzziness": "AUTO",
-                        "boost": 1.5
-                    }
-                },
-                
-                # Wildcard searches for partial matches
-                {
-                    "wildcard": {
-                        "name.keyword": {
-                            "value": f"*{query}*",
-                            "boost": 1.5
-                        }
-                    }
-                },
-                {
-                    "wildcard": {
+                    "regexp": {
                         "first_name.keyword": {
-                            "value": f"*{query}*",
+                            "value": f"(?i){re.escape(query)}",
+                            "boost": 10.0
+                        }
+                    }
+                },
+                {
+                    "regexp": {
+                        "last_name.keyword": {
+                            "value": f"(?i){re.escape(query)}",
+                            "boost": 10.0
+                        }
+                    }
+                },
+                {
+                    "regexp": {
+                        "full_name.keyword": {
+                            "value": f"(?i){re.escape(query)}",
+                            "boost": 12.0
+                        }
+                    }
+                },
+                {
+                    "regexp": {
+                        "name.keyword": {
+                            "value": f"(?i){re.escape(query)}",
+                            "boost": 10.0
+                        }
+                    }
+                },
+                
+                # Case-insensitive wildcard searches using regexp
+                {
+                    "regexp": {
+                        "first_name.keyword": {
+                            "value": f"(?i).*{re.escape(query)}.*",
+                            "boost": 4.0
+                        }
+                    }
+                },
+                {
+                    "regexp": {
+                        "last_name.keyword": {
+                            "value": f"(?i).*{re.escape(query)}.*",
+                            "boost": 4.0
+                        }
+                    }
+                },
+                {
+                    "regexp": {
+                        "full_name.keyword": {
+                            "value": f"(?i).*{re.escape(query)}.*",
+                            "boost": 5.0
+                        }
+                    }
+                },
+                {
+                    "regexp": {
+                        "name.keyword": {
+                            "value": f"(?i).*{re.escape(query)}.*",
+                            "boost": 4.0
+                        }
+                    }
+                },
+                
+                # Text field matches (case-insensitive by default due to analyzers)
+                {
+                    "match": {
+                        "first_name": {
+                            "query": query,
+                            "boost": 6.0
+                        }
+                    }
+                },
+                {
+                    "match": {
+                        "last_name": {
+                            "query": query,
+                            "boost": 6.0
+                        }
+                    }
+                },
+                {
+                    "match": {
+                        "full_name": {
+                            "query": query,
+                            "boost": 7.0
+                        }
+                    }
+                },
+                {
+                    "match": {
+                        "name": {
+                            "query": query,
+                            "boost": 6.0
+                        }
+                    }
+                },
+                {
+                    "match": {
+                        "description": {
+                            "query": query,
+                            "boost": 3.0
+                        }
+                    }
+                },
+                
+                # Additional case-insensitive keyword field searches
+                {
+                    "regexp": {
+                        "email": {
+                            "value": f"(?i).*{re.escape(query)}.*",
+                            "boost": 3.0
+                        }
+                    }
+                },
+                {
+                    "regexp": {
+                        "work_phone": {
+                            "value": f"(?i).*{re.escape(query)}.*",
+                            "boost": 2.5
+                        }
+                    }
+                },
+                {
+                    "regexp": {
+                        "mobile_phone": {
+                            "value": f"(?i).*{re.escape(query)}.*",
+                            "boost": 2.5
+                        }
+                    }
+                },
+                {
+                    "regexp": {
+                        "location.city": {
+                            "value": f"(?i).*{re.escape(query)}.*",
+                            "boost": 3.0
+                        }
+                    }
+                },
+                {
+                    "regexp": {
+                        "location.country": {
+                            "value": f"(?i).*{re.escape(query)}.*",
+                            "boost": 2.0
+                        }
+                    }
+                },
+                {
+                    "regexp": {
+                        "interests": {
+                            "value": f"(?i).*{re.escape(query)}.*",
+                            "boost": 2.0
+                        }
+                    }
+                },
+                {
+                    "regexp": {
+                        "gender": {
+                            "value": f"(?i).*{re.escape(query)}.*",
                             "boost": 1.5
                         }
                     }
                 },
                 {
-                    "wildcard": {
-                        "last_name.keyword": {
-                            "value": f"*{query}*",
-                            "boost": 1.5
+                    "regexp": {
+                        "type": {
+                            "value": f"(?i).*{re.escape(query)}.*",
+                            "boost": 3.0
+                        }
+                    }
+                },
+                {
+                    "regexp": {
+                        "status": {
+                            "value": f"(?i).*{re.escape(query)}.*",
+                            "boost": 2.0
+                        }
+                    }
+                },
+                {
+                    "regexp": {
+                        "tags": {
+                            "value": f"(?i).*{re.escape(query)}.*",
+                            "boost": 3.0
                         }
                     }
                 }
@@ -196,118 +295,6 @@ def build_multi_index_query(query: str, search_rule: Dict[str, Any]) -> Dict[str
             "minimum_should_match": 1
         }
     }
-    
-    # Add nested queries only if they might exist (using separate queries to avoid conflicts)
-    nested_queries = []
-    
-    # Professional experience nested search (only for person_dataset)
-    nested_queries.append({
-        "bool": {
-            "must": [
-                {"term": {"_index": "person_dataset"}},
-                {
-                    "nested": {
-                        "path": "professional_experience",
-                        "query": {
-                            "multi_match": {
-                                "query": query,
-                                "fields": [
-                                    "professional_experience.company^3",
-                                    "professional_experience.position^3",
-                                    "professional_experience.description^2",
-                                    "professional_experience.skills^4"
-                                ],
-                                "type": "best_fields",
-                                "fuzziness": "AUTO"
-                            }
-                        }
-                    }
-                }
-            ]
-        }
-    })
-    
-    # Organization persons nested search (only for organization_units)
-    nested_queries.append({
-        "bool": {
-            "must": [
-                {"term": {"_index": "organization_units"}},
-                {
-                    "nested": {
-                        "path": "persons",
-                        "query": {
-                            "multi_match": {
-                                "query": query,
-                                "fields": [
-                                    "persons.name^3",
-                                    "persons.role^2",
-                                    "persons.email^2"
-                                ],
-                                "type": "best_fields",
-                                "fuzziness": "AUTO"
-                            }
-                        }
-                    }
-                }
-            ]
-        }
-    })
-    
-    # System owners nested search (only for systems_index)
-    nested_queries.append({
-        "bool": {
-            "must": [
-                {"term": {"_index": "systems_index"}},
-                {
-                    "nested": {
-                        "path": "owners",
-                        "query": {
-                            "multi_match": {
-                                "query": query,
-                                "fields": [
-                                    "owners.name^3",
-                                    "owners.email^2",
-                                    "owners.role^2"
-                                ],
-                                "type": "best_fields",
-                                "fuzziness": "AUTO"
-                            }
-                        }
-                    }
-                }
-            ]
-        }
-    })
-    
-    # Cars information nested search (only for person_dataset)
-    nested_queries.append({
-        "bool": {
-            "must": [
-                {"term": {"_index": "person_dataset"}},
-                {
-                    "nested": {
-                        "path": "cars",
-                        "query": {
-                            "multi_match": {
-                                "query": query,
-                                "fields": [
-                                    "cars.make^2",
-                                    "cars.model^2",
-                                    "cars.color",
-                                    "cars.license_plate"
-                                ],
-                                "type": "best_fields",
-                                "fuzziness": "AUTO"
-                            }
-                        }
-                    }
-                }
-            ]
-        }
-    })
-    
-    # Add nested queries to the main query
-    universal_query["bool"]["should"].extend(nested_queries)
     
     return universal_query
 
